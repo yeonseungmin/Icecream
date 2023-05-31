@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Basket : UI_Popup
+public class UI_Menu_snack : UI_Popup
 {
     enum Buttons
     {
-        BasketBtn,
+        BackBtn,
+        StoreBtn,
     }
 
     enum Images
     {
-        BG,
+        //BG,
     }
 
     enum Texts
     {
-        AddressText
+
     }
 
     private void Start()
@@ -32,12 +33,15 @@ public class UI_Basket : UI_Popup
         BindButton(typeof(Buttons));
         BindImage(typeof(Images));
         BindText(typeof(Texts));
-
-        GetButton((int)Buttons.BasketBtn).gameObject.BindEvent(() => { Managers.UI.ClosePopupUI(); });
+        GetButton((int)Buttons.BackBtn).gameObject.BindEvent(ToMainPopup);
+        //GetButton((int)Buttons.ToMainBtn).gameObject.BindEvent(ToMainPopup);
+        GetButton((int)Buttons.StoreBtn).gameObject.BindEvent(() => { Managers.UI.ShowPopupUI<UI_Store>(); });
 
         return true;
     }
 
-    // AddressText�� ����
-
+    public void ToMainPopup()
+    {
+        Managers.UI.ClosePopupUI();
+    }
 }

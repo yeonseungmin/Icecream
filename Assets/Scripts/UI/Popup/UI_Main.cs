@@ -8,6 +8,7 @@ using static Define;
 
 public class UI_Main : UI_Popup
 {
+
     enum Images
     {
         BG,
@@ -27,11 +28,13 @@ public class UI_Main : UI_Popup
     {
         if (base.Init() == false)
             return false;
-
+  
         BindImage(typeof(Images));
         BindText(typeof(Texts));
 
         GetImage((int)Images.BG).gameObject.BindEvent(() => { Managers.UI.ShowPopupUI<UI_Lobby>(); });
+
+
 
         return true;
     }

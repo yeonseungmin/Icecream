@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Menu : UI_Popup
+public class UI_Menu_ice : UI_Popup
 {
     enum Buttons
     {
         //ToMainBtn,
+        BackBtn,
+        StoreBtn,
     }
 
     enum Images
@@ -32,9 +34,9 @@ public class UI_Menu : UI_Popup
         BindButton(typeof(Buttons));
         BindImage(typeof(Images));
         BindText(typeof(Texts));
-
+        GetButton((int)Buttons.BackBtn).gameObject.BindEvent(ToMainPopup);
         //GetButton((int)Buttons.ToMainBtn).gameObject.BindEvent(ToMainPopup);
-
+        GetButton((int)Buttons.StoreBtn).gameObject.BindEvent(() => { Managers.UI.ShowPopupUI<UI_Store>(); });
         return true;
     }
 

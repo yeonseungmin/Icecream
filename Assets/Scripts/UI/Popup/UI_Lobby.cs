@@ -6,12 +6,17 @@ public class UI_Lobby : UI_Popup
 {
     enum Buttons
     {
-        //ToMainBtn,
+        
+        IceCreamBtn,
+        SnackBtn,
+        ABCBtn,
+        StoreBtn,
     }
 
     enum Images
     {
         BG,
+        
     }
 
     enum Texts
@@ -33,9 +38,14 @@ public class UI_Lobby : UI_Popup
         BindImage(typeof(Images));
         BindText(typeof(Texts));
 
-        //GetButton((int)Buttons.ToMainBtn).gameObject.BindEvent(() => { Managers.UI.ClosePopupUI(); });
+        GetButton((int)Buttons.IceCreamBtn).gameObject.BindEvent(() => { Managers.UI.ShowPopupUI<UI_Menu_ice>(); });
+        GetButton((int)Buttons.SnackBtn).gameObject.BindEvent(() => { Managers.UI.ShowPopupUI<UI_Menu_snack>(); });
+        GetButton((int)Buttons.ABCBtn).gameObject.BindEvent(() => { Managers.UI.ShowPopupUI<UI_Menu_ABC>(); });
+        GetButton((int)Buttons.StoreBtn).gameObject.BindEvent(() => { Managers.UI.ShowPopupUI<UI_Store>(); });
+        
 
         return true;
     }
+
 
 }
